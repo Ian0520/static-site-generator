@@ -1,12 +1,12 @@
+from helper import copy_static
 from textnode import TextNode, TextType
+
+STATIC = "static"
+PUBLIC = "public"
 
 
 def main():
-    node = TextNode(
-        "This is some anchor text",
-        TextType.LINK,
-        "https://www.boot.dev",
-    )
-    print(node)
+    copy_static(STATIC, PUBLIC)
+    
 
 main()
