@@ -95,3 +95,10 @@ def text_to_children(text) -> list[LeafNode]:
         text_node_to_html_node(text_node) for text_node in text_nodes
     ]
     return children
+
+def extract_title(markdown: str) -> str:
+    lines = markdown.split('\n')
+    for line in lines:
+        if line.startswith("# "):
+            return line.lstrip("#").strip()
+    raise ValueError("no title was found")

@@ -2,7 +2,7 @@
 
 import unittest
 
-from src.markdown import markdown_to_html_node
+from src.markdown import extract_title, markdown_to_html_node
 
 
 class TestMarkdown(unittest.TestCase):
@@ -105,3 +105,23 @@ This is a paragraph with `code` in it
             html,
             "<div><h1>Heading</h1><p>This is a paragraph with <code>code</code> in it</p><ul><li>item one</li><li>item two</li></ul></div>",
         )
+
+    def test_extract_title(self):
+        md = "#     Hello     "
+        self.assertEqual(extract_title(md), "Hello")
+
+    def test_extract_title_multiple_lines(self):
+        md = """
+# This is the title
+these are
+not the titles.
+        """
+        self.assertEqual(extract_title(md), "This is the title")
+        
+    def test_extract_title_none(self):
+        md = """
+This text does not contain any titles
+contain text
+        """
+        with self.assertRaises(ValueError):
+            extract_title(md)
