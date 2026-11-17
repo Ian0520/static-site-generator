@@ -1,15 +1,15 @@
 from src.helper import copy_static
-from src.generate import generate_page
+from src.generate import generate_pages_recursive
 
 STATIC = "static"
 PUBLIC = "public"
 
-CONTENT = "content/index.md"
-DEST = "public/index.html"
+CONTENT = "content"
+DEST = "public"
 TEMPLATE = "template.html"
 
 def main():
     copy_static(STATIC, PUBLIC)
-    generate_page(CONTENT, TEMPLATE, DEST)
+    generate_pages_recursive(CONTENT, TEMPLATE, DEST)
 
 main()
