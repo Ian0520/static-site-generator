@@ -16,7 +16,7 @@ def generate_page(from_path: str, template_path: str, dest_path: str, basepath: 
     title = extract_title(markdown)
 
     new_page = template.replace("{{ Title }}", title).replace("{{ Content }}", html)
-    new_page = template.replace("href=\"/", f"href=\"{basepath}").replace("src=\"/", f"src=\"{basepath}")
+    new_page = new_page.replace("href=\"/", f"href=\"{basepath}").replace("src=\"/", f"src=\"{basepath}")
 
     dest_dir = os.path.dirname(dest_path)
     if not os.path.exists(dest_dir):
