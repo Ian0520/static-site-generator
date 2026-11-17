@@ -10,7 +10,7 @@ CONTENT = "content"
 TEMPLATE = "template.html"
 
 def main():
-    basepath = sys.argv[0] if sys.argv else "/"
+    basepath = sys.argv[1] if len(sys.argv) > 1 else "/"
     copy_static(STATIC, DEST)
     generate_pages_recursive(CONTENT, TEMPLATE, DEST, basepath)
 
